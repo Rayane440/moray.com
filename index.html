@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moray AI - Présentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0097B2; /* Couleur de fond avec dégradé bleu */
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white; /* Couleur de fond du header en blanc */
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            color: rgba(0, 74, 173, 1); /* Couleur du texte du logo */
+        }
+
+        .logo img {
+            width: 45px; /* Largeur de l'image du logo */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: rgba(0, 74, 173, 1); /* Couleur du texte des liens */
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            color: #FF66C4; /* Couleur rose survol */
+        }
+
+        section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .main-title {
+            font-size: 3em;
+            animation: slideInDown 1.5s; /* Animation modifiée */
+        }
+
+        .description {
+            font-size: 1.2em;
+            margin-top: 20px;
+            animation: slideInUp 1.5s; /* Animation modifiée */
+        }
+
+        .choices {
+            display: flex;
+            justify-content: space-around;
+            margin: 50px 0;
+        }
+
+        .choice-box {
+            background: rgba(255, 255, 255, 0.1); /* Couleur de fond blanche légèrement transparente */
+            padding: 30px;
+            width: 22%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .choice-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Ombre */
+        }
+
+        .choice-box h3 {
+            font-size: 1.5em;
+        }
+
+        .choice-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .personality,
+        .functions {
+            margin: 50px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .personalities,
+        .functionality {
+            width: 45%;
+            background: rgba(56, 182, 255, 0.2); /* Couleur de fond avec transparence bleu clair */
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .personalities:hover,
+        .functionality:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 74, 173, 1); /* Opacité du fond du footer */
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px); /* Animation modifiée */
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100px); /* Animation modifiée */
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Page Styles */
+        .about-container {
+            padding: 50px;
+            text-align: left;
+            background: rgba(0, 74, 173, 1);
+            border-radius: 15px;
+            margin: 50px 100px;
+        }
+
+        .about-container h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="moray-ai-logo.png" alt="Logo Moray AI"> <!-- Image ajoutée au logo -->
+            Moray AI
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="#choose">Choisir Moray</a></li>
+                <li><a href="#functions">Fonctionnalités</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section>
+        <h1 class="main-title">Bienvenue chez Moray AI</h1>
+        <p class="description">Une intelligence artificielle puissante pour vos projets créatifs et techniques. Choisissez votre personnalité préférée et laissez Moray faire le reste !</p>
+    </section>
+
+    <section id="choose">
+        <h2>Choisissez une Personnalité</h2>
+        <div class="choices">
+            <div class="choice-box">
+                <img src="personality1.jpg" alt="Personnalité 1">
+                <h3>Personnalité 1: Amicale et Créative</h3>
+                <p>Une IA axée sur l'innovation artistique et l'empathie.</p>
+            </div>
+            <div class="choice-box">
+                <img src="personality2.jpg" alt="Personnalité 2">
+                <h3>Personnalité 2: Pragmatique et Efficace</h3>
+                <p>Résolution rapide de problèmes et optimisée pour l'analyse.</p>
+            </div>
+            <div class="choice-box">
+                <img src="personality3.jpg" alt="Personnalité 3">
+                <h3>Personnalité 3: Ludique et Engagée</h3>
+                <p>Idéale pour les projets créatifs interactifs.</p>
+            </div>
+            <div class="choice-box">
+                <img src="personality4.jpg" alt="Personnalité 4">
+                <h3>Personnalité 4: Rigoureuse et Technique</h3>
+                <p>Parfait pour des solutions techniques précises.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="functions">
+        <h2>Fonctionnalités de Moray AI</h2>
+        <div class="functions">
+            <div class="functionality">
+                <h3>Génération d'Images</h3>
+                <p>Créez des images incroyables en fonction de vos instructions.</p>
+            </div>
+            <div class="functionality">
+                <h3>Analyse de Problèmes</h3>
+                <p>Utilisez Moray pour résoudre des problèmes complexes en quelques clics.</p>
+            </div>
+        </div>
+        <div class="functions">
+            <div class="functionality">
+                <h3>Génération de QR Code</h3>
+                <p>Générez des QR codes personnalisés instantanément.</p>
+            </div>
+            <div class="functionality">
+                <h3>Analyse d'Images</h3>
+                <p>Analyse rapide et précise d'images avec des résultats détaillés.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Moray AI - Tous droits réservés</p>
+    </footer>
+</body>
+
+</html>

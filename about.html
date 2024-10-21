@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos de Moray AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #004AAD; /* Utilisation de la première couleur */
+            padding: 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #0097B2; /* Utilisation de la deuxième couleur */
+            border-radius: 5px;
+        }
+
+        /* Container for the about section */
+        .about-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .about-container h1 {
+            font-size: 2.5em;
+            color: #004AAD; /* Utilisation de la première couleur */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-container p strong {
+            color: #FF66C4; /* Utilisation de la quatrième couleur */
+        }
+
+        /* Responsive grid for visuals */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .about-grid img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .about-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #38B6FF; /* Utilisation de la troisième couleur */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Moray AI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="index.html#choose">Choisir Moray</a></li>
+                <li><a href="index.html#functions">Fonctionnalités</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <div class="about-container">
+        <h1>À Propos de Moray AI</h1>
+        <p>
+            Moray AI est bien plus qu'une simple intelligence artificielle. Créée par <strong>Space Inc.</strong>, une entreprise 100% marocaine, notre mission est de simplifier l’accès aux technologies avancées et de les rendre utilisables par tous. Chez Space Inc., nous croyons que la technologie ne devrait pas être complexe, mais plutôt un outil puissant et intuitif, à la portée de chaque utilisateur, quelle que soit son expertise.
+        </p>
+        <p>
+            <strong>Une Évolution Permanente</strong><br>
+            Moray AI est un projet en constante évolution. Dès ses débuts, notre objectif a été de proposer une IA capable de s’adapter et de croître en fonction des besoins de ses utilisateurs. Nous avons démarré avec des fonctionnalités essentielles, comme le <em>chatbot</em>, permettant une interaction naturelle et fluide avec l'IA. Mais ce n’est que le début.
+        </p>
+        <p>
+            À mesure que Moray AI se développe, nous ajoutons des fonctionnalités plus avancées telles que : la génération d'images sur mesure, la création de vidéos dynamiques en fonction des besoins spécifiques de chaque utilisateur, l'analyse de données pour résoudre des problèmes complexes, et la génération de QR codes personnalisés.
+        </p>
+        <p>
+            <strong>Accessible à Tous</strong><br>
+            Que vous soyez un professionnel, un créateur de contenu, ou simplement curieux de découvrir le potentiel de l'intelligence artificielle, Moray AI est conçu pour vous. Nos outils sont simples d’utilisation, mais suffisamment puissants pour répondre aux besoins les plus exigeants.
+        </p>
+        <p>
+            <strong>L’Excellence Marocaine avec une Portée Internationale</strong><br>
+            Chez Space Inc., nous combinons innovation locale et standards internationaux pour créer une IA prête à conquérir le monde. Nous croyons fermement que l’intelligence artificielle peut collaborer avec l'humain pour améliorer sa productivité et son expérience de la technologie.
+        </p>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Moray AI - Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
