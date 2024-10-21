@@ -21,15 +21,26 @@
         }
 
         header {
-            background-color: #004AAD; /* Utilisation de la première couleur */
+            background-color: white; /* Utilisation de la première couleur */
             padding: 20px;
-            color: white;
+            color: #004AAD;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 40px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        header .logo span {
             font-size: 2em;
             font-weight: 600;
         }
@@ -41,7 +52,7 @@
         }
 
         nav ul li a {
-            color: white;
+            color: #004AAD;
             text-decoration: none;
             font-weight: 500;
             padding: 10px 20px;
@@ -140,13 +151,13 @@
 <body>
     <!-- Header Section -->
     <header>
-        <div class="logo">Moray AI</div>
+        <div class="logo">
+            <img src="moray-ai-logo.png" alt="Logo Moray AI">
+            <span>Moray AI</span>
+        </div>
         <nav>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="about.html">À Propos</a></li>
-                <li><a href="index.html#choose">Choisir Moray</a></li>
-                <li><a href="index.html#functions">Fonctionnalités</a></li>
+                <li><a href="index.html">Revenir à l'accueil</a></li>
             </ul>
         </nav>
     </header>
@@ -173,6 +184,11 @@
             Chez Space Inc., nous combinons innovation locale et standards internationaux pour créer une IA prête à conquérir le monde. Nous croyons fermement que l’intelligence artificielle peut collaborer avec l'humain pour améliorer sa productivité et son expérience de la technologie.
         </p>
 
+        <!-- Image grid section -->
+        <div class="about-grid">
+            <img src="moray1.jpg" alt="Moray AI Project">
+            <img src="moray2.jpg" alt="Moray AI Team">
+        </div>
     </div>
 
     <!-- Footer Section -->
