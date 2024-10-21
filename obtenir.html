@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moray AI - Obtenir Moray AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0097B2;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: rgba(0, 74, 173, 1);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav ul li a:hover {
+            color: #FF66C4;
+        }
+
+        section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .main-title {
+            font-size: 3em;
+            animation: slideInDown 1.5s;
+        }
+
+        .description {
+            font-size: 1.2em;
+            margin-top: 20px;
+            animation: slideInUp 1.5s;
+        }
+
+        .coming-soon {
+            font-size: 1.5em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 80%;
+            color: rgba(0, 74, 173, 1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 1);
+            color: rgba(0, 74, 173, 1);
+        }
+
+        @keyframes slideInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="moray-ai-logo.png" alt="Logo Moray AI">
+            Moray AI
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À Propos</a></li>
+                <li><a href="obtenir.html">Obtenir Moray AI</a></li>
+                <li><a href="functions.html">Fonctionnalités</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section>
+        <h1 class="main-title">Obtenir Moray AI</h1>
+        <p class="description">L'utilisation de Moray AI sera bientôt disponible. Restez à l'écoute pour des mises à jour !</p>
+        <div class="coming-soon">
+            <p>Cette fonctionnalité n'est pas encore disponible. Revenez plus tard pour accéder à Moray AI et ses incroyables capacités !</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Moray AI - Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>
