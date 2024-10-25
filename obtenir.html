@@ -83,6 +83,36 @@
             color: rgba(0, 74, 173, 1);
         }
 
+        .feedback-form {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .feedback-form label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .feedback-form button {
+            background-color: #FF66C4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -128,6 +158,7 @@
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="about.html">À Propos</a></li>
                 <li><a href="obtenir.html">Obtenir Moray AI</a></li>
+                <li><a href="functions.html">Fonctionnalités</a></li>
             </ul>
         </nav>
     </header>
@@ -138,6 +169,22 @@
         <p class="description">L'utilisation de Moray AI sera bientôt disponible. Restez à l'écoute pour des mises à jour !</p>
         <div class="coming-soon">
             <p>Cette fonctionnalité n'est pas encore disponible. Revenez plus tard pour accéder à Moray AI et ses incroyables capacités !</p>
+        </div>
+
+        <!-- Feedback Form -->
+        <div class="feedback-form">
+            <h2>Demandez à moray une nouvelle fonctionnalité :</h2>
+            <form action="https://formspree.io/f/mldedkzy" method="POST">
+                <label>
+                    Votre email :
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                    Votre message :
+                    <textarea name="message" rows="4" required></textarea>
+                </label>
+                <button type="submit">Envoyer</button>
+            </form>
         </div>
     </section>
 
