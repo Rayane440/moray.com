@@ -1,82 +1,113 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moray Games</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <title>Moray Platform</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #0097B2;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #4a90e2, #9b59b6, #e74c3c);
             color: white;
         }
-
         header {
+            padding: 1rem;
+        }
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 1);
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
+        .logo {
+            width: 50px;
+            height: 50px;
         }
-
-        nav ul li a {
-            color: rgba(0, 74, 173, 1);
+        .nav-links a {
+            color: white;
             text-decoration: none;
-            font-weight: 600;
+            margin-left: 1rem;
+            transition: opacity 0.3s;
         }
-
-        nav ul li a:hover {
-            color: #FF66C4;
+        .nav-links a:hover {
+            opacity: 0.8;
         }
-
-        section {
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 50px 20px;
+            padding: 2rem;
         }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 1);
-            color: rgba(0, 74, 173, 1);
+        .content {
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .primary {
+            background-color: white;
+            color: #4a90e2;
+        }
+        .primary:hover {
+            background-color: #f0f0f0;
+        }
+        .secondary {
+            border: 2px solid white;
+            color: white;
+        }
+        .secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
-
 <body>
-    <!-- Header Section -->
     <header>
-        <div class="logo">
-            <img src="moray-ai-logo.png" alt="Logo Moray AI">
-            Moray Games
-        </div>
         <nav>
-            <ul>
-                <li><a href="moray.html">Accueil</a></li>
-                <li><a href="index.html">Moray AI</a></li>
-                <li><a href="games.html">Moray Games</a></li>
-            </ul>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Moray-DcI3ilJdcyoyk5miFDPgoTAnO5mQRu.png" alt="Moray Logo" class="logo">
+            <div class="nav-links">
+                <a href="https://moray.vercel.app">Moray AI</a>
+                <a href="moraygames.html">Moray Games</a>
+            </div>
         </nav>
     </header>
-
-    <!-- Main Section -->
-    <section>
-        <h1>Découvrez Moray Games</h1>
-        <p>Explorez une collection de jeux innovants, créés par l'IA Moray.</p>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Moray AI - Tous droits réservés.</p>
-    </footer>
+    <main>
+        <div class="content">
+            <h1>Welcome to Moray</h1>
+            <p>Discover the future of AI and gaming with our innovative platforms.</p>
+            <div class="cta-buttons">
+                <a href="https://moray.vercel.app" class="cta-button primary">Explore Moray AI</a>
+                <a href="moraygames.html" class="cta-button secondary">Discover Moray Games</a>
+            </div>
+        </div>
+    </main>
 </body>
-
 </html>
