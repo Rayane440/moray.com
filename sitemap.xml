@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://moray.vercel.app/</loc>
+  <lastmod>2025-01-03T18:16:33+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/index.html</loc>
+  <lastmod>2025-01-03T18:16:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/about.html</loc>
+  <lastmod>2025-01-03T18:16:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/obtenir.html</loc>
+  <lastmod>2025-01-03T18:16:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/Games.html</loc>
+  <lastmod>2025-01-03T18:16:34+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/test.html</loc>
+  <lastmod>2025-01-03T18:16:34+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/secret.html</loc>
+  <lastmod>2025-01-03T18:16:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/moraygames.html</loc>
+  <lastmod>2025-01-03T18:16:35+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/hacked.html</loc>
+  <lastmod>2025-01-03T18:16:35+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://moray.vercel.app/plan.html</loc>
+  <lastmod>2025-01-03T18:16:35+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>
