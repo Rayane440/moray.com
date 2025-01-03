@@ -15,7 +15,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background: linear-gradient(135deg, #4a90e2, #9b59b6, #e74c3c);
+            background: linear-gradient(135deg, #4a90e2, #f25eff, #228d8d);
             color: white;
         }
         header {
@@ -95,7 +95,7 @@
             text-align: center;
             color: #333;
         }
-        .close-button {
+        .close-button, .play-button {
             display: inline-block;
             margin-top: 1rem;
             padding: 0.5rem 1rem;
@@ -105,8 +105,9 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-decoration: none;
         }
-        .close-button:hover {
+        .close-button:hover, .play-button:hover {
             background-color: #3a7bc8;
         }
     </style>
@@ -123,18 +124,13 @@
         </nav>
     </header>
     <main>
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1_20241126_132007_0000-vUPWVBIPnykJGqKI0WGZWuToKodJrR.png" alt="Lock" class="lock-image">
         <div class="content">
             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Moraygames-WDa0vHVfxyokhEV6gswg6V3cvtyzVC.png" alt="Moray Games Logo" class="games-logo" id="gamesLogo">
-            <h2>Coming Soon</h2>
-            <p>Get ready for an immersive gaming experience like no other.</p>
+            <h2>Hacked vient tout juste sortir!</h2>
+            <p>(accés anticipé)</p>
+            <a href="hacked.html" class="play-button">Jouer</a>
         </div>
     </main>
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <h3>Access Information</h3>
-            <p>Hcked est prêt, il sera publié le 6 janvier 2024</p>
-            <button class="close-button" id="closeModal">Close</button>
         </div>
     </div>
     <script>
@@ -158,3 +154,4 @@
     </script>
 </body>
 </html>
+
