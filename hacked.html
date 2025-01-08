@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacked - Plongez dans l'univers du hacking</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
         @keyframes glitch {
             0% {
                 transform: translate(0);
@@ -57,7 +59,6 @@
             5% {
                 text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;
             }
-            /* Add more text shadow variations */
         }
 
         @keyframes terminal-blink {
@@ -66,7 +67,7 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
+            font-family: 'Press Start 2P', cursive;
             margin: 0;
             padding: 0;
             background-color: #0d1117;
@@ -159,12 +160,13 @@
             color: #00ff00;
             border: 1px solid #00ff00;
             padding: 10px 20px;
-            font-family: 'Courier New', monospace;
+            font-family: 'Press Start 2P', cursive;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-size: 0.7em;
         }
 
         .return-button:hover {
@@ -222,7 +224,7 @@
         }
 
         h1 {
-            font-size: 3.5em;
+            font-size: 2.5em;
             margin: 0;
             color: #00ff00;
             text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
@@ -230,8 +232,8 @@
         }
 
         .play-button {
-            font-family: 'Courier New', monospace;
-            font-size: 28px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2em;
             padding: 20px 40px;
             margin: 40px auto;
             display: inline-block;
@@ -296,7 +298,7 @@
             border-bottom: 2px solid rgba(0, 255, 0, 0.2);
             padding-bottom: 10px;
             margin-top: 0;
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
 
         ul, ol {
@@ -342,8 +344,8 @@
             background-color: rgba(13, 17, 23, 0.95);
             border: 1px solid #00ff00;
             padding: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7em;
             color: #00ff00;
             overflow: hidden;
             animation: fadeIn 0.5s ease-out;
@@ -360,17 +362,22 @@
             animation: terminal-blink 1s infinite;
         }
 
+        p {
+            font-size: 0.8em;
+            line-height: 1.8;
+        }
+
         @media (max-width: 768px) {
             .logo {
                 width: 120px;
             }
 
             h1 {
-                font-size: 2.5em;
+                font-size: 2em;
             }
 
             .play-button {
-                font-size: 20px;
+                font-size: 1em;
                 padding: 15px 30px;
             }
 
@@ -382,7 +389,11 @@
             .terminal {
                 width: 250px;
                 height: 150px;
-                font-size: 10px;
+                font-size: 0.6em;
+            }
+
+            p {
+                font-size: 0.7em;
             }
         }
     </style>
@@ -435,6 +446,8 @@
 
     <section>
         <h2>Ambiance</h2>
+        <p>
+            Plongez dans une atmosphère sh2>Ambiance</h2>
         <p>
             Plongez dans une atmosphère sombre et oppressante. Hacked vous confronte à des dilemmes complexes 
             et mettra à l'épreuve votre intelligence et votre sang-froid.
