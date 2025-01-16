@@ -1,507 +1,1142 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacked - Plongez dans l'univers du hacking</title>
+    <title>Nexus OS</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        @keyframes glitch {
-            0% {
-                transform: translate(0);
-                text-shadow: -2px 0 #0f0, 2px 2px #f0f;
-            }
-            20% {
-                transform: translate(-2px, 2px);
-                text-shadow: 2px -2px #0f0, -2px 2px #f0f;
-            }
-            40% {
-                transform: translate(-2px, -2px);
-                text-shadow: 2px 0 #0f0, -2px -2px #f0f;
-            }
-            60% {
-                transform: translate(2px, 2px);
-                text-shadow: -2px 2px #0f0, 2px -2px #f0f;
-            }
-            80% {
-                transform: translate(2px, -2px);
-                text-shadow: 2px 2px #0f0, -2px 0 #f0f;
-            }
-            100% {
-                transform: translate(0);
-                text-shadow: -2px 0 #0f0, 2px 2px #f0f;
-            }
-        }
-
-        @keyframes scanline {
-            0% {
-                transform: translateY(-100%);
-            }
-            100% {
-                transform: translateY(100%);
-            }
-        }
-
-        @keyframes flicker {
-            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-                opacity: 0.99;
-            }
-            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-                opacity: 0.4;
-            }
-        }
-
-        @keyframes textShadow {
-            0% {
-                text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-            }
-            5% {
-                text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;
-            }
-        }
-
-        @keyframes terminal-blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        body {
-            font-family: 'Press Start 2P', cursive;
+        body, html {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            background-color: #0d1117;
-            color: #00ff00;
-            line-height: 1.6;
-            animation: flicker 5s infinite;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background-image: url('images/wallpaper.jpeg');
         }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(0, 255, 0, 0.03) 0px,
-                    rgba(0, 255, 0, 0.03) 1px,
-                    transparent 1px,
-                    transparent 2px
-                );
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        .scanline {
-            position: fixed;
-            top: 0;
-            left: 0;
+        #initialScreen, #loginScreen, #desktopScreen {
+            height: 100%;
             width: 100%;
-            height: 20px;
-            background: linear-gradient(
-                to bottom,
-                transparent,
-                rgba(0, 255, 0, 0.2),
-                transparent
-            );
-            animation: scanline 4s linear infinite;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        .noise {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-radial-gradient(
-                circle at 50% 50%,
-                rgba(0, 0, 0, 0),
-                rgba(0, 0, 0, 0) 2px,
-                rgba(0, 255, 0, 0.03) 3px
-            );
-            pointer-events: none;
-            z-index: 998;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-
-        .top-header {
-            background-color: rgba(13, 17, 23, 0.95);
-            padding: 15px 20px;
+        #initialScreen {
+            background-color: #81acbd;
+            z-index: 20;
+        }
+        #loginScreen {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20241127-WA0000.jpg-QaBW77FkPQNaqqKrxG3XW7SVFzYZkn.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 10;
+            display: none;
+        }
+        #desktopScreen {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20241127-WA0000.jpg-QaBW77FkPQNaqqKrxG3XW7SVFzYZkn.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 5;
+            display: none;
+        }
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .form-container h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        .form-container button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #81acbd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+        .desktop-icons {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+        }
+        .desktop-icon {
+            width: 80px;
+            height: 90px;
+            text-align: center;
+            color: black;
+            cursor: pointer;
+            padding: 5px;
+            margin-right: 20px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+        }
+        .desktop-icon img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 5px;
+        }
+        .desktop-icon:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+        .window {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background-color: #fff;
+            border: 1px solid #728192;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 100;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .window-header {
+            background: linear-gradient(to right, #007bff, #0056b3);
+            color: white;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1001;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
-            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
         }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo {
-            width: 150px;
-            height: auto;
-            filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.5));
-            animation: glitch 2s infinite;
-        }
-
-        .return-button {
+        .close-btn, .minimize-btn {
             background-color: transparent;
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 10px 20px;
-            font-family: 'Press Start 2P', cursive;
-            text-transform: uppercase;
+            color: white;
+            border: none;
+            font-size: 20px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.7em;
+            margin-left: 10px;
         }
-
-        .return-button:hover {
-            background-color: #00ff00;
-            color: #0d1117;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+        .window-content {
+            padding: 15px;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+            color: #ffffff;
         }
-
-        .return-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(0, 255, 0, 0.4),
-                transparent
-            );
-            transition: 0.5s;
+        #paintCanvas {
+            border: 1px solid #ccc;
+            cursor: crosshair;
         }
-
-        .return-button:hover::before {
-            left: 100%;
+        #cmdPrompt {
+            background-color: #000;
+            color: #0F0;
+            font-family: 'Courier New', monospace;
         }
-
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            position: relative;
-            background: rgba(13, 17, 23, 0.95);
-            overflow: hidden;
+        #cmdPrompt .window-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
-
-        header::before {
-            content: '';
-            position: absolute;
+        #backgroundSlider {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, 
-                    rgba(0, 255, 0, 0.03) 1px, 
-                    transparent 1px
-                ),
-                linear-gradient(0deg, 
-                    rgba(0, 255, 0, 0.03) 1px, 
-                    transparent 1px
-                );
-            background-size: 20px 20px;
-            pointer-events: none;
+            width: 200vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.8s ease-out;
         }
-
-        h1 {
-            font-size: 2.5em;
-            margin: 0;
-            color: #00ff00;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-            animation: glitch 2s infinite;
+        .background-section {
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
         }
-
-        .play-button {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.2em;
-            padding: 20px 40px;
-            margin: 40px auto;
-            display: inline-block;
-            background-color: transparent;
-            color: #00ff00;
-            border: 2px solid #00ff00;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: glitch 3s infinite;
+        #normalBackground {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20241127-WA0000.jpg-QaBW77FkPQNaqqKrxG3XW7SVFzYZkn.jpeg');
         }
-
-        .play-button::before {
-            content: '';
-            position: absolute;
+        #horrorBackground {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1_20241120_143757_0000-bAKX3eo4vhUW3TIAiJQNgJkgAEXD9E.png');
+        }
+        #videoOverlay {
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgb(255, 255, 255);
+            z-index: 9999;
+            display: none;
+        }
+        #loadingVideo, #unstoppableVideo {
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(0, 255, 0, 0.4),
-                transparent
-            );
-            transition: 0.5s;
+            object-fit: cover;
         }
-
-        .play-button:hover::before {
-            left: 100%;
-        }
-
-        .play-button:hover {
-            background-color: #00ff00;
-            color: #0d1117;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-            transform: scale(1.05);
-        }
-
-        section {
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 800px;
-            background-color: rgba(13, 17, 23, 0.95);
-            border: 1px solid rgba(0, 255, 0, 0.1);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 255, 0, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
-        }
-
-        section h2 {
-            color: #00ff00;
-            border-bottom: 2px solid rgba(0, 255, 0, 0.2);
-            padding-bottom: 10px;
-            margin-top: 0;
-            font-size: 1.5em;
-        }
-
-        ul, ol {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        li::before {
-            content: '>';
-            position: absolute;
-            left: -20px;
-            color: #00ff00;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(13, 17, 23, 0.95);
-            border-top: 1px solid rgba(0, 255, 0, 0.1);
-        }
-
-        footer a {
-            color: #00ff00;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-        }
-
-        .terminal {
+        #quizPopup {
+            display: none;
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 200px;
-            background-color: rgba(13, 17, 23, 0.95);
-            border: 1px solid #00ff00;
-            padding: 10px;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 0.7em;
-            color: #00ff00;
-            overflow: hidden;
-            animation: fadeIn 0.5s ease-out;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(238, 238, 238, 0.8);
+            border: 1px solid #5b646d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             z-index: 1000;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
         }
-
-        .terminal::before {
-            content: '> ';
-            color: #00ff00;
+        #quizPopup button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-
-        .terminal::after {
-            content: '█';
-            animation: terminal-blink 1s infinite;
+        #quizPopup button:hover {
+            background-color: #0056b3;
         }
-
-        p {
-            font-size: 0.8em;
-            line-height: 1.8;
+        .close-quiz {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #fff;
         }
-
-        @media (max-width: 768px) {
-            .logo {
-                width: 120px;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .play-button {
-                font-size: 1em;
-                padding: 15px 30px;
-            }
-
-            section {
-                margin: 20px 10px;
-                padding: 20px;
-            }
-
-            .terminal {
-                width: 250px;
-                height: 150px;
-                font-size: 0.6em;
-            }
-
-            p {
-                font-size: 0.7em;
-            }
+        #taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .taskbar-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        #clock {
+            color: white;
+            font-size: 14px;
+        }
+        .right-buttons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .right-button {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .right-button:hover {
+            background-color: #ccc;
+        }
+        #warningVideo {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 1001;
+        }
+        #cameraContainer {
+            display: none;
+            width: 100%;
+            height: 300px;
+            background-color: #000000;
+            position: relative;
+        }
+        #videoElement {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #requestCameraButton {
+            margin-bottom: 10px;
+        }
+        #fastWebWindow {
+            width: 800px;
+            height: 600px;
+        }
+        #fastWebWindow .window-content {
+            display: flex;
+            flex-direction: column;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #searchButton {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #searchResults {
+            margin-top: 20px;
+        }
+        .search-result {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        .search-result h3 {
+            margin: 0;
+            color: #007bff;
+        }
+        .search-result p {
+            margin: 5px 0;
+        }
+        .search-result .url {
+            color: #006621;
+            font-size: 14px;
+        }
+        #galleryWindow .window-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .gallery-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-image:hover {
+            transform: scale(1.1);
+        }
+        #taskbarIcons {
+            display: flex;
+            align-items: center;
+        }
+        .taskbar-app-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        #galleryContent {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
     </style>
 </head>
 <body>
-    <div class="scanline"></div>
-    <div class="noise"></div>
-
-    <div class="top-header">
-        <div class="logo-container">
-            <img src="hacked.png" alt="Hacked Logo" class="logo">
+    <div id="initialScreen">
+        <div class="form-container">
+            <h2>Welcome to Nexus OS</h2>
+            <input type="text" id="createUsername" placeholder="Create Username" required>
+            <input type="password" id="createPassword" placeholder="Create Password" required>
+            <button onclick="createAccount()">Create Account</button>
+            <button onclick="startGame()">Start Game</button>
         </div>
-        <a href="https://moray.vercel.app/Games.html" class="return-button">Retour</a>
     </div>
 
-    <header>
-        <h1>Hacked</h1>
-        <p>Un jeu immersif et intense où chaque décision peut être une question de vie ou de mort.</p>
-        <button class="play-button">Jouer</button>
-    </header>
-
-    <section>
-        <h2>Synopsis</h2>
-        <p>
-            Vous incarnez un utilisateur ordinaire dont la vie bascule lorsqu'un hacker, connu sous le pseudonyme 
-            <strong>The Cyberdark</strong>, pirate votre ordinateur. Accédant à vos informations personnelles, il vous traque et menace votre existence.
-        </p>
-        <p>
-            Dans un monde où une entreprise nommée Nexus a créé une IA avancée, <strong>Existence</strong>, aujourd'hui incontrôlable, vous devez affronter un ennemi imprévisible. 
-            Avec l'aide d'un ami expert en cybersécurité, votre objectif est simple : traquer et neutraliser The Cyberdark avant qu'il ne soit trop tard.
-        </p>
-    </section>
-
-    <section>
-        <h2>Gameplay</h2>
-        <ul>
-            <li><strong>Résolution d'énigmes :</strong> Analysez des fichiers, déchiffrez des codes et découvrez des indices.</li>
-            <li><strong>Décisions stratégiques :</strong> Chaque choix influence le déroulement de l'histoire. Prenez des décisions rapidement.</li>
-            <li><strong>Narration immersive :</strong> Une histoire captivante mêlant cybercriminalité, survie et technologie.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Objectif</h2>
-        <p>
-            Neutralisez <strong>The Cyberdark</strong> avant qu'il ne mette à exécution ses plans destructeurs. 
-            Utilisez vos compétences pour contrer ses attaques, protéger vos données et reprendre le contrôle de votre vie.
-        </p>
-    </section>
-
-    <section>
-        <h2>Ambiance</h2>
-        <p>
-            Plongez dans une atmosphère sombre et oppressante. Hacked vous confronte à des dilemmes complexes 
-            et mettra à l'épreuve votre intelligence et votre sang-froid.
-        </p>
-    </section>
-
-    <section>
-        <h2>Pourquoi jouer ?</h2>
-        <p>
-            Si vous aimez les jeux où l'adrénaline, les énigmes et la stratégie se mélangent dans un scénario captivant, alors <strong>Hacked</strong> est fait pour vous.  
-            Êtes-vous prêt à plonger dans l'univers du hacking et à relever le défi ?
-        </p>
-    </section>
-
-    <div class="terminal">
-        Initializing system...
-        <br>Loading game data...
-        <br>Accessing mainframe...
-        <br>Welcome to Hacked
+    <div id="videoOverlay">
+        <video id="loadingVideo" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/loading%20system_20241126_123413_0001-uZVIHgjwAbI5jn6pw0ctxayMlVNHL7.mp4"></video>
+        <video id="unstoppableVideo" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/loading%20system_20241126_123413_0001-uZVIHgjwAbI5jn6pw0ctxayMlVNHL7.mp4" loop></video>
     </div>
 
-    <footer>
-        <p>© 2025 Moray Games | <a href="qr.me-qr.com/1Sm8WZm1">Contactez-nous</a></p>
-    </footer>
+    <div id="loginScreen">
+        <div class="form-container">
+            <h2>Login to Nexus OS</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+
+    <div id="desktopScreen">
+        <div id="backgroundSlider">
+            <div id="normalBackground" class="background-section"></div>
+            <div id="horrorBackground" class="background-section"></div>
+        </div>
+        <div class="desktop-icons">
+            <div class="desktop-icon" onclick="openNotepad()">
+                <img src="note.png" alt="readme.txt">
+                <div>readme.txt</div>
+            </div>
+            <div class="desktop-icon" onclick="openFileManager()">
+                <img src="file.png" alt="File Manager">
+                <div>File Manager</div>
+            </div>
+            <div class="desktop-icon" onclick="openFastWeb()">
+                <img src="internet.png" alt="FastWeb">
+                <div>FastWeb</div>
+            </div>
+            <div class="desktop-icon" onclick="openPaint()">
+                <img src="paint.png" alt="Paint">
+                <div>Paint</div>
+            </div>
+            <div class="desktop-icon" onclick="openRecycleBin()">
+                <img src="/placeholder.svg?height=48&width=48" alt="Recycle Bin">
+                <div>Recycle Bin</div>
+            </div>
+            <div class="desktop-icon" onclick="openPictureApp()">
+                <img src="cam.png" alt="Picture App">
+                <div>Picture App</div>
+            </div>
+            <div class="desktop-icon" onclick="openGallery()">
+                <img src="gallery.png" alt="Gallery">
+                <div>Gallery</div>
+            </div>
+        </div>
+        <div class="right-buttons">
+            <div class="right-button"></div>
+            <div class="right-button"></div>
+            <div class="right-button"></div>
+            <div class="right-button"></div>
+            <div class="right-button"></div>
+        </div>
+        <div id="taskbar">
+            <div id="taskbarIcons"></div>
+            <div id="clock"></div>
+            <div>
+                <img src="wifi.png" alt="WiFi" class="taskbar-icon" onclick="toggleWifi()">
+                <img src="off.png" alt="Shutdown" class="taskbar-icon" onclick="shutdown()">
+            </div>
+        </div>
+    </div>
+
+    <div id="notepadWindow" class="window">
+        <div class="window-header">
+            <span>readme.txt - Notepad</span>
+            <button class="minimize-btn" onclick="minimizeWindow('notepadWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('notepadWindow')">&times;</button>
+        </div>
+        <div class="window-content">
+            <p id="noteContent"></p>
+        </div>
+    </div>
+
+    <div id="fileManagerWindow" class="window">
+        <div class="window-header">
+            <span>File Manager</span>
+            <button class="minimize-btn" onclick="minimizeWindow('fileManagerWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('fileManagerWindow')">&times;</button>
+        </div>
+        <div class="window-content" id="fileManagerContent"></div>
+    </div>
+
+    <div id="fastWebWindow" class="window">
+        <div class="window-header">
+            <span>FastWeb</span>
+            <button class="minimize-btn" onclick="minimizeWindow('fastWebWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('fastWebWindow')">&times;</button>
+        </div>
+        <div class="window-content">
+            <h1>FastWeb</h1>
+            <input type="text" id="searchInput" placeholder="Enter your search query">
+            <button id="searchButton" onclick="performSearch()">Search</button>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <div id="paintWindow" class="window">
+        <div class="window-header">
+            <span>Paint</span>
+            <button class="minimize-btn" onclick="minimizeWindow('paintWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('paintWindow')">&times;</button>
+        </div>
+        <div class="window-content">
+            <canvas id="paintCanvas" width="580" height="360"></canvas>
+        </div>
+    </div>
+
+    <div id="recycleBinWindow" class="window">
+        <div class="window-header">
+            <span>Recycle Bin</span>
+            <button class="minimize-btn" onclick="minimizeWindow('recycleBinWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('recycleBinWindow')">&times;</button>
+        </div>
+        <div class="window-content" id="recycleBinContent"></div>
+    </div>
+
+    <div id="cmdPrompt" class="window">
+        <div class="window-header">
+            <span>Command Prompt</span>
+            <button class="minimize-btn" onclick="minimizeWindow('cmdPrompt')">-</button>
+            <button class="close-btn" onclick="closeWindow('cmdPrompt')">&times;</button>
+        </div>
+        <div class="window-content" id="cmdContent"></div>
+    </div>
+
+    <div id="quizPopup">
+        <span class="close-quiz" onclick="closeQuiz()">&times;</span>
+        <h3>Do you want to play a game?</h3>
+        <button onclick="playGame(true)">Yes</button>
+        <button onclick="playGame(false)">No</button>
+    </div>
+
+    <div id="morayPlanWindow" class="window">
+        <div class="window-header">
+            <span>Moray.plan</span>
+            <button class="minimize-btn" onclick="minimizeWindow('morayPlanWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('morayPlanWindow')">&times;</button>
+        </div>
+        <div class="window-content">
+            <iframe src="plan.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <div id="pictureAppWindow" class="window">
+        <div class="window-header">
+            <span>Picture App</span>
+            <button class="minimize-btn" onclick="minimizeWindow('pictureAppWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('pictureAppWindow')">&times;</button>
+        </div>
+        <div class="window-content">
+            <button id="requestCameraButton">Activate Camera</button>
+            <div id="cameraContainer">
+                <video id="videoElement" autoplay></video>
+            </div>
+            <button onclick="takePicture()" style="display: none;">Take Picture</button>
+            <canvas id="capturedImage" style="display: none;"></canvas>
+        </div>
+    </div>
+
+    <div id="galleryWindow" class="window">
+        <div class="window-header">
+            <span>Gallery</span>
+            <button class="minimize-btn" onclick="minimizeWindow('galleryWindow')">-</button>
+            <button class="close-btn" onclick="closeWindow('galleryWindow')">&times;</button>
+        </div>
+        <div class="window-content" id="galleryContent"></div>
+    </div>
+
+    <video id="warningVideo" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Go%20back%20to%20where%20you%20came%20from...%20You%E2%80%99re%20not%20ready%20to%20see%20what%E2%80%99s%20here.%20Turn%20around%20now,%20before%20it%E2%80%99s%20too%20late.-CHVxBNoVytvHMw9AmHsBiq74wI0cGm.mp4"></video>
+
+    <audio id="backgroundAudio" loop>
+        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Phantom%20Echo-zBPUE7q3DeSZNOdySfCnBiV4QVmupO.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="clickSound">
+        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/click-Hy5Ue5Ue5Ue5Ue5Ue5Ue5.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="typeSound">
+        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/type-Hy5Ue5Ue5Ue5Ue5Ue5Ue5.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Terminal animation
-            const terminal = document.querySelector('.terminal');
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDSfXfbZgkaCzqWo1bLxg5B3xKVh-RhZQ8",
+            authDomain: "nexusos.firebaseapp.com",
+            projectId: "nexusos",
+            storageBucket: "nexusos.firebasestorage.app",
+            messagingSenderId: "923203193870",
+            appId: "1:923203193870:web:6c18d406e284fd1a24005f",
+            measurementId: "G-E9LFP9Q878"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        let username = '';
+        let backgroundInterval;
+        const fileTypes = ['doc', 'pdf', 'jpg', 'txt', 'exe', 'zip', 'plan'];
+        const fileNames = ['Report', 'Invoice', 'Photo', 'Notes', 'virus', 'Archive', 'Moray'];
+        let recycleBinItems = [];
+        let isWifiOn = true;
+        let openWindows = new Set();
+
+        // Background slider functionality
+        let startX = 0;
+        let isDragging = false;
+        const slider = document.getElementById('backgroundSlider');
+
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            const diff = startX - e.clientX;
+            if (diff > 50) { // Threshold for showing horror background
+                slider.style.transform = 'translateX(-100vw)';
+            } else {
+                slider.style.transform = 'translateX(0)';
+            }
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDragging = false;
+            // Snap back to normal after 2 seconds
             setTimeout(() => {
-                terminal.style.display = 'none';
-            }, 3000);
+                slider.style.transform = 'translateX(0)';
+            }, 2000);
+        });
 
-            // Random glitch effect for text
-            const addGlitchEffect = (element) => {
-                setInterval(() => {
-                    if (Math.random() < 0.1) {
-                        element.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-                        setTimeout(() => {
-                            element.style.transform = 'translate(0, 0)';
-                        }, 50);
-                    }
-                }, 250);
-            };
+        window.createAccount = function() {
+            const username = document.getElementById('createUsername').value + "@nexusos.com";
+            const password = document.getElementById('createPassword').value;
+            
+            firebase.auth().createUserWithEmailAndPassword(username, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    alert("Account created successfully for " + username + "!");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert("Error: " + errorMessage);
+                });
+        }
 
-            // Apply glitch effect to titles
-            document.querySelectorAll('h1, h2, .logo').forEach(addGlitchEffect);
+        window.startGame = function() {
+            playSound('clickSound');
+            document.getElementById('initialScreen').style.display = 'none';
+            playLoadingVideo();
+        }
 
-            // Play button effect
-            const playButton = document.querySelector('.play-button');
-            playButton.addEventListener('click', () => {
-                playButton.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    playButton.style.transform = 'scale(1)';
-                }, 100);
+        function playLoadingVideo() {
+            const videoOverlay = document.getElementById('videoOverlay');
+            const loadingVideo = document.getElementById('loadingVideo');
+            
+            videoOverlay.style.display = 'block';
+            loadingVideo.style.display = 'block';
+            loadingVideo.play();
+            
+            loadingVideo.addEventListener('ended', () => {
+                videoOverlay.style.display = 'none';
+                loadingVideo.style.display = 'none';
+                document.getElementById('loginScreen').style.display = 'flex';
             });
+        }
+
+        window.login = function() {
+            const username = document.getElementById('username').value + "@nexusos.com";
+            const password = document.getElementById('password').value;
+            
+            firebase.auth().signInWithEmailAndPassword(username, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    playSound('clickSound');
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('desktopScreen').style.display = 'block';
+                    startBackgroundAudio();
+                    updateClock();
+                    setInterval(updateClock, 1000);
+                    setTimeout(openQuiz, 10000);
+                    alert("Logged in successfully as " + username);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert("Error: " + errorMessage);
+                });
+        }
+
+        window.openNotepad = function() {
+            playSound('clickSound');
+            document.getElementById('noteContent').innerText = `Your computer, is now, mine... I knew everything about you ... ${username} I hid files about you on this computer... and by the way, we can get to know each other better `;
+            openWindow('notepadWindow');
+            startBackgroundChange();
+            moveIcons();
+        }
+
+        window.openFileManager = function() {
+            playSound('clickSound');
+            const fileManagerContent = document.getElementById('fileManagerContent');
+            fileManagerContent.innerHTML = '';
+
+            for (let i = 0; i < 10; i++) {
+                const fileType = fileTypes[Math.floor(Math.random() * fileTypes.length)];
+                const fileName = fileNames[Math.floor(Math.random() * fileNames.length)];
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <img src="/placeholder.svg?height=24&width=24" alt="${fileType}">
+                    <span>${fileName}_${Math.floor(Math.random() * 1000)}.${fileType}</span>
+                `;
+                fileItem.onclick = function() {
+                    if (fileName === 'virus') {
+                        openCmdPrompt();
+                    } else if (fileName === 'Moray' && fileType === 'plan') {
+                        openMorayPlan();
+                    }
+                };
+                fileManagerContent.appendChild(fileItem);
+            }
+
+            // Add virus file
+            const virusFile = document.createElement('div');
+            virusFile.className = 'file-item';
+            virusFile.innerHTML = `
+                <img src="/placeholder.svg?height=24&width=24" alt="exe">
+                <span>virus.exe</span>
+            `;
+            virusFile.onclick = openCmdPrompt;
+            fileManagerContent.appendChild(virusFile);
+
+            openWindow('fileManagerWindow');
+        }
+
+        window.openFastWeb = function() {
+            playSound('clickSound');
+            openWindow('fastWebWindow');
+        }
+
+        window.performSearch = function() {
+            playSound('clickSound');
+            const query = document.getElementById('searchInput').value;
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            const fakeResults = [
+                { title: "How to hack a computer", url: "not_connected.html", description: "Learn the basics of computer hacking with our comprehensive guide." },
+                { title: "Best programming languages for hackers", url: "not_connected.html", description: "Discover the top programming languages used by hackers worldwide." },
+                { title: "Advanced encryption techniques", url: "not_connected.html", description: "Master the art of data encryption with our step-by-step tutorials." },
+                { title: "Ethical hacking certification", url: "not_connected.html", description: "Get certified in ethical hacking and boost your cybersecurity career." },
+                { title: "Top 10 hacking tools", url: "not_connected.html", description: "Explore the most powerful and popular tools used by hackers today." }
+            ];
+
+            fakeResults.forEach(result => {
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result';
+                resultElement.innerHTML = `
+                    <h3><a href="${result.url}" target="_blank">${result.title}</a></h3>
+                    <p>${result.description}</p>
+                    <p class="url">${result.url}</p>
+                `;
+                resultsContainer.appendChild(resultElement);
+            });
+        }
+
+        window.openPaint = function() {
+            playSound('clickSound');
+            openWindow('paintWindow');
+            const canvas = document.getElementById('paintCanvas');
+            const ctx = canvas.getContext('2d');
+            let painting = false;
+            let lastX= 0;
+            let lastY = 0;
+
+            function startPosition(e) {
+                painting = true;
+                draw(e);
+            }
+
+            function endPosition() {
+                painting = false;
+                ctx.beginPath();
+            }
+
+            function draw(e) {
+                if (!painting) return;
+                ctx.lineWidth = 5;
+                ctx.lineCap = 'round';
+                ctx.strokeStyle = 'black';
+
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+
+                [lastX, lastY] = [x, y];
+            }
+
+            canvas.addEventListener('mousedown', (e) => {
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+                startPosition(e);
+            });
+            canvas.addEventListener('mouseup', endPosition);
+            canvas.addEventListener('mouseout', endPosition);
+            canvas.addEventListener('mousemove', draw);
+        }
+
+        window.openRecycleBin = function() {
+            playSound('clickSound');
+            const recycleBinContent = document.getElementById('recycleBinContent');
+            recycleBinContent.innerHTML = '';
+
+            recycleBinItems.forEach((item, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <img src="/placeholder.svg?height=24&width=24" alt="${item.type}">
+                    <span>${item.name}</span>
+                    <button onclick="deleteFile(${index})">Delete</button>
+                `;
+                recycleBinContent.appendChild(fileItem);
+            });
+
+            openWindow('recycleBinWindow');
+        }
+
+        window.deleteFile = function(index) {
+            playSound('clickSound');
+            recycleBinItems.splice(index, 1);
+            openRecycleBin();
+        }
+
+        window.openCmdPrompt = function() {
+            playSound('clickSound');
+            const cmdPrompt = document.getElementById('cmdPrompt');
+            const cmdContent = document.getElementById('cmdContent');
+            cmdContent.innerHTML = '';
+            openWindow('cmdPrompt');
+
+            function typeWriter(text, i = 0) {
+                if (i < text.length) {
+                    cmdContent.innerHTML += text.charAt(i);
+                    playSound('typeSound');
+                    i++;
+                    setTimeout(() => typeWriter(text, i), 50);
+                } else if (text === 'Access granted. Welcome to the system.\n') {
+                    setTimeout(() => {
+                        cmdContent.innerHTML += '\nDo you want to play? (yes/no): ';
+                        document.addEventListener('keydown', handleCmdInput);
+                    }, 1000);
+                }
+            }
+
+            typeWriter('192.168.1.254\n\n');
+            setTimeout(() => {
+                typeWriter('Initializing system...\n');
+                setTimeout(() => {
+                    typeWriter('Accessing main frame...\n');
+                    setTimeout(() => {
+                        typeWriter('Bypassing security protocols...\n');
+                        setTimeout(() => {
+                            typeWriter('Access granted. Welcome to the system.\n');
+                        }, 2000);
+                    }, 2000);
+                }, 2000);
+            }, 2000);
+        }
+
+        function handleCmdInput(e) {
+            if (e.key === 'Enter') {
+                const input = document.getElementById('cmdContent').innerHTML.split(':').pop().trim().toLowerCase();
+                document.removeEventListener('keydown', handleCmdInput);
+                if (input === 'yes') {
+                    alert('The adventure will be available soon');
+                }
+                closeWindow('cmdPrompt');
+            }
+        }
+
+        function openQuiz() {
+            document.getElementById('quizPopup').style.display = 'block';
+        }
+
+        window.playGame = function(play) {
+            playSound('clickSound');
+            if (play) {
+                alert('The adventure will be available soon');
+            }
+            closeQuiz();
+        }
+
+        window.closeQuiz = function() {
+            document.getElementById('quizPopup').style.display = 'none';
+        }
+
+        window.openWindow = function(windowId) {
+            playSound('clickSound');
+            document.getElementById(windowId).style.display = 'block';
+            openWindows.add(windowId);
+            updateTaskbar();
+        }
+
+        window.closeWindow = function(windowId) {
+            playSound('clickSound');
+            document.getElementById(windowId).style.display = 'none';
+            openWindows.delete(windowId);
+            updateTaskbar();
+        }
+
+        window.minimizeWindow = function(windowId) {
+            playSound('clickSound');
+            document.getElementById(windowId).style.display = 'none';
+            updateTaskbar();
+        }
+
+        function updateTaskbar() {
+            const taskbarIcons = document.getElementById('taskbarIcons');
+            taskbarIcons.innerHTML = '';
+            openWindows.forEach(windowId => {
+                const icon = document.createElement('img');
+                icon.src = "/placeholder.svg?height=24&width=24";
+                icon.alt = windowId;
+                icon.className = 'taskbar-app-icon';
+                icon.onclick = () => {
+                    const window = document.getElementById(windowId);
+                    if (window.style.display === 'none') {
+                        window.style.display = 'block';
+                    } else {
+                        window.style.display = 'none';
+                    }
+                };
+                taskbarIcons.appendChild(icon);
+            });
+        }
+
+        function startBackgroundChange() {
+            if (backgroundInterval) return;
+            let isDefault = true;
+            backgroundInterval = setInterval(() => {
+                document.getElementById('desktopScreen').style.backgroundColor = isDefault ? 'transparent' : '#000000';
+                document.getElementById('desktopScreen').style.backgroundImage = isDefault ?
+                    `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG-20241127-WA0000.jpg-QaBW77FkPQNaqqKrxG3XW7SVFzYZkn.jpeg')` : 'none';
+                isDefault = !isDefault;
+            }, 1000);
+        }
+
+        function moveIcons() {
+            let icons = document.querySelectorAll('.desktop-icon');
+            icons.forEach(icon => {
+                let x = Math.random() * (window.innerWidth - icon.offsetWidth);
+                let y = Math.random() * (window.innerHeight - icon.offsetHeight);
+                icon.style.transition = 'all 2s ease';
+                icon.style.left = `${x}px`;
+                icon.style.top = `${y}px`;
+            });
+        }
+
+        function startBackgroundAudio() {
+            const audio = document.getElementById('backgroundAudio');
+            audio.volume = 0.3;
+            audio.play();
+        }
+
+        function playSound(soundId) {
+            const sound = document.getElementById(soundId);
+            sound.currentTime = 0;
+            sound.play();
+        }
+
+        window.toggleWifi = function() {
+            isWifiOn = !isWifiOn;
+            alert(isWifiOn ? "WiFi turned on" : "WiFi turned off");
+        }
+
+        window.shutdown = function() {
+            document.body.style.backgroundColor = '#000';
+            document.body.innerHTML = '<div style="color: #fff; text-align: center; padding-top: 20%;">System shutting down...</div>';
+            setTimeout(() => {
+                document.body.innerHTML = '';
+                document.body.style.cursor = 'none';
+            }, 2000);
+        }
+
+        window.openMorayPlan = function() {
+            playSound('clickSound');
+            openWindow('morayPlanWindow');
+        }
+
+        let lastClickTime = 0;
+        document.getElementById('desktopScreen').addEventListener('click', function(event) {
+            const currentTime = new Date().getTime();
+            if (currentTime - lastClickTime < 300) {
+                playWarningVideo();
+            }
+            lastClickTime = currentTime;
+        });
+
+        function playWarningVideo() {
+            const video = document.getElementById('warningVideo');
+            video.style.display = 'block';
+            video.play();
+
+            video.onended = function() {
+                video.style.display = 'none';
+            };
+        }
+
+        // Unstoppable video functionality
+        function playUnstoppableVideo() {
+            const videoOverlay = document.getElementById('videoOverlay');
+            const unstoppableVideo = document.getElementById('unstoppableVideo');
+            
+            videoOverlay.style.display = 'block';
+            unstoppableVideo.style.display = 'block';
+            unstoppableVideo.play();
+
+            // Make the video truly unstoppable
+            unstoppableVideo.onpause = function() { this.play(); };
+            unstoppableVideo.onended = function() { this.play(); };
+        }
+
+        document.querySelectorAll('.right-button').forEach(button => {
+            button.addEventListener('dblclick', playUnstoppableVideo);
+        });
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        window.openPictureApp = function() {
+            playSound('clickSound');
+            openWindow('pictureAppWindow');
+            setupCameraApp();
+        }
+
+        function setupCameraApp() {
+            const requestCameraButton = document.getElementById('requestCameraButton');
+            const cameraContainer = document.getElementById('cameraContainer');
+            const videoElement = document.getElementById('videoElement');
+            const takePictureButton = document.querySelector('#pictureAppWindow button[onclick="takePicture()"]');
+
+            requestCameraButton.addEventListener('click', function() {
+                navigator.permissions.query({ name: 'camera' }).then((permission) => {
+                    if (permission.state === 'granted') {
+                        startCamera();
+                    } else if (permission.state === 'prompt') {
+                        requestCameraAccess();
+                    } else {
+                        alert("Camera access denied. Please change your browser settings.");
+                    }
+                }).catch((error) => {
+                    console.error("Error checking permissions:", error);
+                    alert("Unable to verify access permissions.");
+                });
+            });
+
+            function requestCameraAccess() {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then((stream) => {
+                        console.log("Camera activated!");
+                        videoElement.srcObject = stream;
+                        cameraContainer.style.display = 'block';
+                        requestCameraButton.style.display = 'none';
+                        takePictureButton.style.display = 'block';
+                    })
+                    .catch((error) => {
+                        if (error.name === 'NotAllowedError') {
+                            alert("Please allow camera access to continue.");
+                        } else if (error.name === 'NotFoundError') {
+                            alert("No camera found on this device.");
+                        } else {
+                            alert("Error: " + error.message);
+                        }
+                        console.error("Camera access error:", error);
+                    });
+            }
+
+            function startCamera() {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then((stream) => {
+                        videoElement.srcObject = stream;
+                        cameraContainer.style.display = 'block';
+                        requestCameraButton.style.display = 'none';
+                        takePictureButton.style.display = 'block';
+                    })
+                    .catch((error) => {
+                        alert("Unable to start the camera. Error: " + error.message);
+                        console.error("Error:", error);
+                    });
+            }
+        }
+
+        window.takePicture = function() {
+            const video = document.getElementById('videoElement');
+            const canvas = document.getElementById('capturedImage');
+            const context = canvas.getContext('2d');
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            canvas.style.display = 'block';
+            video.style.display = 'none';
+
+            alert("Picture taken!");
+
+            addImageToGallery(canvas.toDataURL('image/png'));
+        }
+
+        function addImageToGallery(imageDataUrl) {
+            const galleryContent = document.getElementById('galleryContent');
+            const img = document.createElement('img');
+            img.src = imageDataUrl;
+            img.alt = `Captured Image`;
+            img.className = 'gallery-image';
+            img.onclick = () => {
+                alert(`Viewing captured image`);
+            };
+            galleryContent.appendChild(img);
+        }
+
+        window.openGallery = function() {
+            playSound('clickSound');
+            openWindow('galleryWindow');
+        }
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some placeholder images to the gallery
+            const galleryContent = document.getElementById('galleryContent');
+            for (let i = 0; i < 12; i++) {
+                const img = document.createElement('img');
+                img.src = `/placeholder.svg?height=150&width=150`;
+                img.alt = `Gallery Image ${i + 1}`;
+                img.className = 'gallery-image';
+                img.onclick = () => {
+                    alert(`Viewing image ${i + 1}`);
+                };
+                galleryContent.appendChild(img);
+            }
         });
     </script>
 </body>
